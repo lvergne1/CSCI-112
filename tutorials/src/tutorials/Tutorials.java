@@ -1,4 +1,14 @@
-    
+/*  Week 5 Iterative Sorting
+ *  CSCI 112 ONLINE
+ *  Last modified 2/25/16 @ 3:45 pm
+ *  @author C. Herbert 
+ *  @modified by Leo Vergnetti
+ */
+
+ /*
+  * Sorry, felt weird putting my name as author since most of the program
+  * is your work --
+  */
 /*  CSCI 111 - Fall 2013
  * reading, sorting and writing data in text files
  * this program reads data from a text file, sorst the data,
@@ -29,23 +39,54 @@ public static void main(String[] args) throws Exception
         String[] tutorials = new String[100];     // an array to hold a list of tutorials
         int count;		// the number of elements in the that are used
         
+        
+        // BUBBLE SORT 
+        System.out.println("Demonstrating Bubble Sort\n");
         // read data into tutorials[] line by line and return count
         count = readLines(tutorials); 
-        
         // print the array on the screen
-        System.out.println("The original array:\n");
+        System.out.println("The original array:");    
         displayLines(tutorials, count);
-        
-        //to sort the array 
-        //bubbleSortStringArray(tutorials, count);
-        selectionSortStringArray(tutorials, count);
-       //insertionSortStringArray(tutorials, count);
-        // print the array on the screen  line by line
-        System.out.println("\nThe selection sorted array:\n");
+        //use bubble sort
+         bubbleSortStringArray(tutorials, count);
+        //output
+        System.out.println("\nThe bubble sorted array:");  
         displayLines(tutorials, count);
-        
         // write the array to a data file line by line
         writeLines(tutorials, count);
+        //to sort the array 
+        
+        // SELECTION SORT
+        System.out.println("\nDemonstrating Selection Sort\n");
+        // read data into tutorials[] line by line and return count
+        count = readLines(tutorials); 
+        // print the array on the screen
+        System.out.println("The original array:");    
+        displayLines(tutorials, count);
+        //use selection sort
+         selectionSortStringArray(tutorials, count);
+        //output
+        System.out.println("\nThe selection sorted array:");  
+        displayLines(tutorials, count);
+        // write the array to a data file line by line
+        writeLines(tutorials, count);
+        
+        //INSERTION SORT
+        System.out.println("\nDemonstrating Insertion Sort\n");
+        // read data into tutorials[] line by line and return count
+        count = readLines(tutorials); 
+        // print the array on the screen
+        System.out.println("The original array:");    
+        displayLines(tutorials, count);
+        //use insertion sort
+         insertionSortStringArray(tutorials, count);
+        //output
+        System.out.println("\nThe Insertion sorted array:");  
+        displayLines(tutorials, count);
+        // write the array to a data file line by line
+        writeLines(tutorials, count);
+        
+        
 
     } // end main()        
 /*************************************************/
@@ -86,6 +127,7 @@ public static void main(String[] args) throws Exception
     } // end readList()
 /*************************************************/
     
+     
     /* This method sorts an array of Strings line by line 
      * using a simple bubble sort. 
      * 
@@ -142,11 +184,11 @@ public static void main(String[] args) throws Exception
         int spot;       //location in array where minimum will be inserted
         int minimum;   //location of minimum value in remainder
         
-        for (spot=0; spot<count-1; spot++){
+        for (spot=0; spot<count-1; spot++){     
             minimum = spot;
             for (int i = spot+1; i<count;i++){
                 if ((a[i].compareTo(a[minimum])) < 0){
-                    minimum = i;
+                    minimum = i; //if i is less than minimum, i is new minimum
                 }
             }//end for i
             
@@ -167,20 +209,23 @@ public static void main(String[] args) throws Exception
      */
     
     public static void insertionSortStringArray(String[] a, int count){
-        String temp; // catalyst variable for string swapping
+       
         int i;      //pointer to item in unsorted list
         int j;      //pointer to an item in sorted list
         String value;  //the next value to be inserted into sorted list
         
-        for(i=1; i<count; i++){
-            value = a[i];
-            j = i-1;
+        for(i=1; i<count; i++){     // iterate for each item in unsorted list
+            
+            value = a[i];       //assigns value of element in list to be sorted
+            j = i-1;            //assign j to be the last element in sorted list
             
             while (j >= 0 && (a[j].compareTo(value) >= 0)){
-                a[j+1] = a[j];
-                j--;
+                //if there are still elements in unsorted list 
+                //and if the value to be inserted is less than the the value at index
+                a[j+1] = a[j];  //copy element to the right
+                j--;            //increment to check value to the left
             }//end while --the array continues moving each element right
-            a[j+1] = value;
+            a[j+1] = value;     //assign value to it's place 
         }//end for loop
     }
 /******************************************************************/
