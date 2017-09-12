@@ -1,0 +1,9 @@
+﻿Week 1: MultipleClasses 
+Week 2: FibonacciCalculator - Recursion
+Week 3: NumbersGuessingGame - Using an API
+Week 4: DirectoryClone - Recursive Directory Duplication 
+Week 5: tutorials- Iterative Sorting
+Week 6: Algorithm Benchmark - Benchmarking Sorting Algorithms
+Week 7: DatabaseConn - Chapter 21 JDBC
+Week 8: ParallelReport- Programming Assignment 10
+Week 9: otherlanguagecode - Programming In Another Language
